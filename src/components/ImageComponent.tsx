@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { media } from "../utils/customMediaBreaks";
+import { motion } from "framer-motion"
 
 function ImageComponent({
   mainImage,
@@ -8,12 +9,29 @@ function ImageComponent({
   mainImage: string | undefined;
   secondaryImg: string | undefined;
 }) {
+  console.log(23)
   return (
     <ImgWrapper>
-      <img src={mainImage} alt="" />
-      {secondaryImg ? <img src={secondaryImg} /> : ""}
+      <motion.img
+        key={mainImage}
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, }} // Corrected transition duration
+        src={mainImage} alt=""
+      />
+      {secondaryImg ? (
+        <motion.img
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 2 }} // Corrected transition duration
+          src={secondaryImg}
+        />
+      ) : (
+        ""
+      )}
     </ImgWrapper>
   );
+
 }
 
 const ImgWrapper = styled.div`

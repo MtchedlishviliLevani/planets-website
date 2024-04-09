@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Body from "../components/Body";
 import { planetColors, planetNames } from "../data/data";
 import { media } from "../utils/customMediaBreaks";
+import { motion } from "framer-motion"
 
 interface activeLink {
   $activeLink: string;
@@ -37,7 +38,11 @@ function Root() {
 
   return (
     <>
-      <Header>
+      <AnimatedHeader
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 5 }}
+      >
         <Container>
           <HeaderWrapper>
             <div>
@@ -68,7 +73,7 @@ function Root() {
             </Nav>
           </HeaderWrapper>
         </Container>
-      </Header>
+      </AnimatedHeader>
       <>
         {!isOpen && (
           <Container>
@@ -91,6 +96,8 @@ const Header = styled.header`
   border-style: solid;
   border-width: 0 0 1px 0;
 `;
+
+const AnimatedHeader = motion(Header);
 
 const Nav = styled.nav<{ $isOpen: boolean }>`
   ${media.phone} {
@@ -189,6 +196,9 @@ const StyledLink = styled(Link) <activeLink>`
     ${media.phone} {
       content: initial;
     }
+  }
+  &::before{
+    transition: .6s ease-in-out;
   }
   &:hover::before {
     background-color: ${(props) =>

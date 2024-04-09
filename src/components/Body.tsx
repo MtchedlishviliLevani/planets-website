@@ -111,6 +111,8 @@ const TopicContainer = styled.button<TopicContainerProps>`
   background: ${(props) =>
     props.$activestyled === props.$index ? props.$activeColor : ""};
   cursor: pointer;
+  transition: background-color .7s ease-out;
+  
   &:hover {
     background: ${(props) =>
     props.$activestyled !== props.$index ? "#D8D8D8" : ""};
