@@ -5,7 +5,7 @@ import Body from "../components/Body";
 import { planetColors, planetNames } from "../data/data";
 import { media } from "../utils/customMediaBreaks";
 import { motion } from "framer-motion"
-
+import MenuIcon from "../assets/images/menu-icon.svg"
 interface activeLink {
   $activeLink: string;
   $activeIndex: number;
@@ -49,8 +49,8 @@ function Root() {
               <StyledLogo to="/">THE PLANETS</StyledLogo>
             </div>
             <BurgerMenuPhoto
-              src="../../src/assets/images/menu-icon.svg"
-              alt=""
+              src={MenuIcon}
+              alt="burger menu icon"
               onClick={() => setIsOpen(!isOpen)}
             />
 
